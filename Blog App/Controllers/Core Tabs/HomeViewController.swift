@@ -9,7 +9,7 @@ class HomeViewController: UIViewController {
         button.backgroundColor = .systemBlue
         button.tintColor = .white
         button.setImage(UIImage(systemName: "square.and.pencil") , for: .normal)
-        button.layer.cornerRadius = 40
+        button.layer.cornerRadius = 30
         button.layer.shadowColor = UIColor.label.cgColor
         button.layer.shadowOpacity = 0.4
         button.layer.shadowRadius = 10
@@ -26,8 +26,8 @@ class HomeViewController: UIViewController {
         super.viewDidLayoutSubviews()
         composeButton.frame = CGRect(x: view.frame.width - 80 - 16,
                                      y: view.frame.height - 80 - 16 - view.safeAreaInsets.bottom,
-                                     width: 80,
-                                     height: 100)
+                                     width: 60,
+                                     height: 60)
     }
     @objc func didTapCreate(){
         let vc = CreateNewPostViewController()

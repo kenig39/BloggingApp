@@ -51,6 +51,7 @@ class CreateNewPostViewController: UITabBarController {
         view.addSubview(headerImageView)
         view.addSubview(textView)
         view.addSubview(titleField)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapHeader))
         
     }
     override func viewDidLayoutSubviews() {
@@ -62,6 +63,11 @@ class CreateNewPostViewController: UITabBarController {
         textView.frame = CGRect(x: 10, y: headerImageView.bottom+10, width: view.with-20, height: view.height-210-view.safeAreaInsets.top)
     }
     
+    @objc private func didTapHeader(){
+        let picked = UIImagePickerController()
+        picked.sourceType = .photoLibrary
+        present(picked, animated: true)
+    }
     
     private  func configureButton(){
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel",
