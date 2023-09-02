@@ -9,7 +9,7 @@ import UIKit
 
 class CreateNewPostViewController: UITabBarController {
     
-    private var selectedHeaderIndex: UIImage?
+    private var selectedHeaderImage: UIImage?
     
     //Title to field
     private let titleField: UITextField = {
@@ -74,11 +74,27 @@ class CreateNewPostViewController: UITabBarController {
     }
     
     @objc func didTapCancel(){
-        
+        dismiss(animated: true)
     }
     
     @objc func didTapPost(){
+        guard let title = titleField.text,
+              let body = textView.text,
+              let headerImage = selectedHeaderImage,
+              !title.trimmingCharacters(in: .whitespaces).isEmpty,
+              !body.trimmingCharacters(in: .whitespaces).isEmpty
+              
+        else {
+            return
+        }
+        //upload header Image
         
+        
+        let post = BlogPost(indentifier: UUID().uuidString,
+                            title: title,
+                            timestamp: Date().timeIntervalSince1970,
+                            headerImageUrl: nil,
+                            text: body)
     }
         
 }

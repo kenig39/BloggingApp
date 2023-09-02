@@ -33,7 +33,7 @@ class HomeViewController: UIViewController {
         let vc = CreateNewPostViewController()
         vc.title = "Create Post"
         let navVc = UINavigationController(rootViewController: vc)
-        present(vc, animated: true)
+        present(navVc, animated: true)
     }
 
 }
