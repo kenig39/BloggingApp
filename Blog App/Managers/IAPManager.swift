@@ -1,8 +1,22 @@
-//
-//  IAPManager.swift
-//  Blog App
-//
-//  Created by Alexander on 29.01.2024.
-//
+
 
 import Foundation
+import Purchases
+
+final class IAPManager {
+    static let shared = IAPManager()
+    
+    private init() {}
+    
+    func isPremium(){
+        
+    }
+    
+    func subscribe(){
+        
+    }
+    
+    func restorePurchases(){
+        
+    }
+}

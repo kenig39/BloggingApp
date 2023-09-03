@@ -24,6 +24,9 @@
 		FA3085962B68263E00E730FC /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3085952B68263D00E730FC /* DataBaseManager.swift */; };
 		FA3085982B68266B00E730FC /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3085972B68266B00E730FC /* AuthManager.swift */; };
 		FA30859A2B68268C00E730FC /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3085992B68268C00E730FC /* StorageManager.swift */; };
+		FA9A5A652B690A2C0087E02F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA9A5A642B690A2A0087E02F /* GoogleService-Info.plist */; };
+		FA9A5A672B696C5B0087E02F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9A5A662B696C5B0087E02F /* User.swift */; };
+		FA9A5A692B696C890087E02F /* BlogPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9A5A682B696C890087E02F /* BlogPost.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +51,9 @@
 		FA3085952B68263D00E730FC /* DataBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
 		FA3085972B68266B00E730FC /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		FA3085992B68268C00E730FC /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		FA9A5A642B690A2A0087E02F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FA9A5A662B696C5B0087E02F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		FA9A5A682B696C890087E02F /* BlogPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogPost.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +75,6 @@
 				611E48B3EDA6557FE8DAC1CA /* Pods-Blog App.debug.xcconfig */,
 				E85FAFE075B6AF92EC620EEA /* Pods-Blog App.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -116,6 +121,8 @@
 		FA3085802B68220100E730FC /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FA9A5A662B696C5B0087E02F /* User.swift */,
+				FA9A5A682B696C890087E02F /* BlogPost.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -134,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				FA3085722B681FAA00E730FC /* Assets.xcassets */,
+				FA9A5A642B690A2A0087E02F /* GoogleService-Info.plist */,
 				FA3085692B681FA700E730FC /* AppDelegate.swift */,
 				FA30856B2B681FA700E730FC /* SceneDelegate.swift */,
 			);
@@ -249,6 +257,7 @@
 			files = (
 				FA3085762B681FAA00E730FC /* LaunchScreen.storyboard in Resources */,
 				FA3085732B681FAA00E730FC /* Assets.xcassets in Resources */,
+				FA9A5A652B690A2C0087E02F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,7 +315,9 @@
 				FA30858B2B68255800E730FC /* SingUpViewController.swift in Sources */,
 				FA30856E2B681FA700E730FC /* HomeViewController.swift in Sources */,
 				FA30856A2B681FA700E730FC /* AppDelegate.swift in Sources */,
+				FA9A5A692B696C890087E02F /* BlogPost.swift in Sources */,
 				FA3085852B6822C800E730FC /* ProfileViewController.swift in Sources */,
+				FA9A5A672B696C5B0087E02F /* User.swift in Sources */,
 				FA3085902B6825B300E730FC /* CreateNewPostViewController.swift in Sources */,
 				FA3085942B68261200E730FC /* IAPManager.swift in Sources */,
 				FA3085872B68231D00E730FC /* TabBarViewController.swift in Sources */,
