@@ -30,7 +30,10 @@ class HomeViewController: UIViewController {
                                      height: 100)
     }
     @objc func didTapCreate(){
-        
+        let vc = CreateNewPostViewController()
+        vc.title = "Create Post"
+        let navVc = UINavigationController(rootViewController: vc)
+        present(vc, animated: true)
     }
 
 }
