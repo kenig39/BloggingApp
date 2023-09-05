@@ -39,10 +39,21 @@ class PostPreviewTableViewTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        postImageView.frame = CGRect(x: separatorInset.left,
+                                     y: 5,
+                                     width: contentView.height-10,
+                                     height: contentView.height-10)
+        
+        postTitleLabel.frame = CGRect(x: postImageView.right+5,
+                                      y: 5,
+                                      width: contentView.with-5-separatorInset.left-postImageView.with,
+                                      height: contentView.height-10)
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        postImageView .image = nil
+        postTitleLabel.text = nil
     }
     
     func configure(with string: String){
