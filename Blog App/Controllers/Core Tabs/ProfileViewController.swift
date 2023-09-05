@@ -9,7 +9,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     private let tableView: UITableView = {
           let tableView = UITableView()
-          tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(PostPreviewTableViewCell.self, forCellReuseIdentifier: PostPreviewTableViewCell.indentifier)
          return tableView
       }()
       
@@ -208,7 +208,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        guard  let cell = tableView.dequeueReusableCell(withIdentifier: PostPreviewTableViewCell.indentifier, for: indexPath) as? PostPreviewTableViewCell else {
+            fatalError()
+        }
         let post = posts[indexPath.row]
         cell.textLabel?.text = post.title
         

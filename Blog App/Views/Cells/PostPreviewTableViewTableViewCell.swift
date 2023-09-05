@@ -19,9 +19,9 @@ class PostPreviewTableViewCellViewModel {
     }
 }
 
-class PostPreviewTableViewTableViewCell: UITableViewCell {
+class PostPreviewTableViewCell: UITableViewCell {
 
-    static let indentifire = "PostPreviewTableViewCell"
+    static let indentifier = "PostPreviewTableViewCell"
     
     private let postImageView: UIImageView = {
     let imageView = UIImageView()
