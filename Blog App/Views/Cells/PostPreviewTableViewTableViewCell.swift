@@ -10,7 +10,7 @@ import UIKit
 class PostPreviewTableViewCellViewModel {
     let title: String
     let imageUrl: URL?
-    let imageData: Data?
+    var imageData: Data?
     
     init(title: String, imageUrl: URL?, imageData: Data?) {
         self.title = title
@@ -76,7 +76,21 @@ class PostPreviewTableViewTableViewCell: UITableViewCell {
             
         }
         else if let url = viewModel.imageUrl {
+            //fetch image & cache
             
+            let task = URLSession.shared.dataTask(with: url) {[weak self] data, _, _ in
+                guard let data = data else {
+                    return
+                }
+                
+                viewModel.imageData = data
+                DispatchQueue.main.async {
+                    self?.postImageView.image = UIImage(data: data)
+                }
+                
+            }
+            
+            task.resume()
         }
         
     }
