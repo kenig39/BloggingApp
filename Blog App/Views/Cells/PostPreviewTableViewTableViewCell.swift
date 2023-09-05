@@ -7,6 +7,18 @@
 
 import UIKit
 
+class PostPreviewTableViewCellViewModel {
+    let title: String
+    let imageUrl: URL?
+    let imageData: Data?
+    
+    init(title: String, imageUrl: URL?, imageData: Data?) {
+        self.title = title
+        self.imageUrl = imageUrl
+        self.imageData = imageData
+    }
+}
+
 class PostPreviewTableViewTableViewCell: UITableViewCell {
 
     static let indentifire = "PostPreviewTableViewCell"
@@ -56,7 +68,16 @@ class PostPreviewTableViewTableViewCell: UITableViewCell {
         postTitleLabel.text = nil
     }
     
-    func configure(with string: String){
+    func configure(with viewModel: PostPreviewTableViewCellViewModel){
+        postTitleLabel.text = viewModel.title
+        
+        if let data = viewModel.imageData{
+            postImageView.image = UIImage(data: data)
+            
+        }
+        else if let url = viewModel.imageUrl {
+            
+        }
         
     }
 }
