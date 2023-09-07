@@ -9,8 +9,28 @@ import UIKit
 
 class CreateNewPostViewController: UITabBarController {
     
-    //Titlr to field
+    //Title to field
+    private let titleField: UITextField = {
+       let textField = UITextField()
+        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 50))
+        textField.leftViewMode = .always
+        textField.placeholder = "Enter Title...."
+        textField.autocapitalizationType = .words
+        textField.autocorrectionType = .yes
+        textField.backgroundColor = .secondarySystemBackground
+        textField.layer.cornerRadius = 8
+        textField.layer.masksToBounds = true
+        return textField
+    }()
     
+    // TextView for post
+    private let textView: UITextView = {
+       let textview = UITextView()
+        textview.isEditable = true
+        textview.backgroundColor = .secondarySystemBackground
+        textview.font = .systemFont(ofSize: 28)
+        return textview
+    }()
     
     //Image Header
     private let headerImageView: UIImageView = {
