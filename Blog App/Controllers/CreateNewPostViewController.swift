@@ -51,7 +51,11 @@ class CreateNewPostViewController: UITabBarController {
         view.addSubview(headerImageView)
         view.addSubview(textView)
         view.addSubview(titleField)
-        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapHeader))
+        let tap = UITapGestureRecognizer(target: self,
+                                         action: #selector(didTapHeader))
+        headerImageView.addGestureRecognizer(tap)
+        
+        
         
     }
     override func viewDidLayoutSubviews() {
@@ -66,6 +70,7 @@ class CreateNewPostViewController: UITabBarController {
     @objc private func didTapHeader(){
         let picked = UIImagePickerController()
         picked.sourceType = .photoLibrary
+        picked.delegate = self
         present(picked, animated: true)
     }
     
@@ -103,4 +108,20 @@ class CreateNewPostViewController: UITabBarController {
                             text: body)
     }
         
+}
+extension CreateNewPostViewController: UIImagePickerControllerDelegate , UINavigationControllerDelegate {
+ 
+    func  imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true)
+    }
+     
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true)
+        guard let image = info[.originalImage] as? UIImage else {
+            return
+        }
+        selectedHeaderImage = image
+        headerImageView.image = image
+    }
 }
