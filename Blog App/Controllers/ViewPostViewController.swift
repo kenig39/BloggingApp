@@ -49,16 +49,47 @@ class ViewPostViewController: UITabBarController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3 // title.image text
+        return 3 // title, image, text
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let index = indexPath.row
-        //0: title
-        
-        //1: image
-        
+        switch index {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            cell.selectionStyle = .none
+            cell.textLabel?.numberOfLines = 0
+            cell.textLabel?.font = .systemFont(ofSize: 24, weight: .bold)
+            cell.textLabel?.text = post.title
+            return cell
+        case 1:
+           guard let cell = tableView.dequeueReusableCell(withIdentifier: PostHeaderTableViewCell.indentifire, for: indexPath) as? PostHeaderTableViewCell else {
+                fatalError()
+            }
+            cell.selectionStyle = .none
+            cell.configure(with: .init(imageUrl: post.headerImageUrl))
+            return cell
+        case 2:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            cell.selectionStyle = .none
+            cell.textLabel?.text = post.title
+            return cell
+        default: fatalError()
+        }
         
     }
-
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let index = indexPath.row
+        switch index {
+        case 0:
+            return UITableView.automaticDimension
+        case 1:
+          return 150
+        case 2:
+            return UITableView.automaticDimension
+        default:
+            return UITableView.automaticDimension
+    }
+  }
 }
