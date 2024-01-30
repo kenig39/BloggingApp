@@ -27,6 +27,7 @@
 		FA9A5A652B690A2C0087E02F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA9A5A642B690A2A0087E02F /* GoogleService-Info.plist */; };
 		FA9A5A672B696C5B0087E02F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9A5A662B696C5B0087E02F /* User.swift */; };
 		FA9A5A692B696C890087E02F /* BlogPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9A5A682B696C890087E02F /* BlogPost.swift */; };
+		FA9A5A6B2B6975800087E02F /* payWallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9A5A6A2B6975800087E02F /* payWallViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,8 @@
 		FA9A5A642B690A2A0087E02F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FA9A5A662B696C5B0087E02F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FA9A5A682B696C890087E02F /* BlogPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogPost.swift; sourceTree = "<group>"; };
+		FA9A5A6A2B6975800087E02F /* payWallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = payWallViewController.swift; sourceTree = "<group>"; };
+		FA9A5A6C2B6978220087E02F /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +147,7 @@
 				FA9A5A642B690A2A0087E02F /* GoogleService-Info.plist */,
 				FA3085692B681FA700E730FC /* AppDelegate.swift */,
 				FA30856B2B681FA700E730FC /* SceneDelegate.swift */,
+				FA9A5A6A2B6975800087E02F /* payWallViewController.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -173,6 +177,7 @@
 				FA3085862B68231D00E730FC /* TabBarViewController.swift */,
 				FA3085842B6822C800E730FC /* ProfileViewController.swift */,
 				FA30856D2B681FA700E730FC /* HomeViewController.swift */,
+				FA9A5A6C2B6978220087E02F /* Configuration.storekit */,
 			);
 			path = "Core Tabs";
 			sourceTree = "<group>";
@@ -325,6 +330,7 @@
 				FA30858D2B68257B00E730FC /* ViewPostViewController.swift in Sources */,
 				FA3085962B68263E00E730FC /* DataBaseManager.swift in Sources */,
 				FA30859A2B68268C00E730FC /* StorageManager.swift in Sources */,
+				FA9A5A6B2B6975800087E02F /* payWallViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
