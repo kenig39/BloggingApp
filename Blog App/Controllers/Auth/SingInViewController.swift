@@ -18,7 +18,8 @@ class SingInViewController: UITabBarController {
         DispatchQueue.main.asyncAfter(deadline: .now()+3){
             if !IAPManager.shared.isPremium(){
                 let vc = PayWallViewController()
-                self.present(vc, animated: true)
+                let navVC = UINavigationController(rootViewController: vc)
+                self.present(navVC, animated: true)
             }
         }
         

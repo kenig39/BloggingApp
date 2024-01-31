@@ -10,7 +10,45 @@
 
   },
   "subscriptionGroups" : [
+    {
+      "id" : "E2441E5B",
+      "localizations" : [
 
+      ],
+      "name" : "premium",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "0.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "63994162",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "",
+              "displayName" : "",
+              "locale" : "en_US"
+            },
+            {
+              "description" : "unlock all thoughts",
+              "displayName" : "Blogs",
+              "locale" : "ru"
+            }
+          ],
+          "productID" : "1234567",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Blogs",
+          "subscriptionGroupID" : "E2441E5B",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
   ],
   "version" : {
     "major" : 2,

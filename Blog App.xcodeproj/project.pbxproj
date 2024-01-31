@@ -24,10 +24,13 @@
 		FA3085962B68263E00E730FC /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3085952B68263D00E730FC /* DataBaseManager.swift */; };
 		FA3085982B68266B00E730FC /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3085972B68266B00E730FC /* AuthManager.swift */; };
 		FA30859A2B68268C00E730FC /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3085992B68268C00E730FC /* StorageManager.swift */; };
+		FA81F3392B6AC6A2001BB712 /* PayWallHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA81F3382B6AC6A2001BB712 /* PayWallHeaderView.swift */; };
+		FA81F33B2B6AC854001BB712 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA81F33A2B6AC854001BB712 /* Extentions.swift */; };
+		FA81F33D2B6AD81E001BB712 /* PayWallDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA81F33C2B6AD81E001BB712 /* PayWallDescriptionView.swift */; };
 		FA9A5A652B690A2C0087E02F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA9A5A642B690A2A0087E02F /* GoogleService-Info.plist */; };
 		FA9A5A672B696C5B0087E02F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9A5A662B696C5B0087E02F /* User.swift */; };
 		FA9A5A692B696C890087E02F /* BlogPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9A5A682B696C890087E02F /* BlogPost.swift */; };
-		FA9A5A6B2B6975800087E02F /* payWallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9A5A6A2B6975800087E02F /* payWallViewController.swift */; };
+		FA9A5A6B2B6975800087E02F /* PayWallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9A5A6A2B6975800087E02F /* PayWallViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,10 +55,13 @@
 		FA3085952B68263D00E730FC /* DataBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
 		FA3085972B68266B00E730FC /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		FA3085992B68268C00E730FC /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		FA81F3382B6AC6A2001BB712 /* PayWallHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayWallHeaderView.swift; sourceTree = "<group>"; };
+		FA81F33A2B6AC854001BB712 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
+		FA81F33C2B6AD81E001BB712 /* PayWallDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayWallDescriptionView.swift; sourceTree = "<group>"; };
 		FA9A5A642B690A2A0087E02F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FA9A5A662B696C5B0087E02F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FA9A5A682B696C890087E02F /* BlogPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogPost.swift; sourceTree = "<group>"; };
-		FA9A5A6A2B6975800087E02F /* payWallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = payWallViewController.swift; sourceTree = "<group>"; };
+		FA9A5A6A2B6975800087E02F /* PayWallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayWallViewController.swift; sourceTree = "<group>"; };
 		FA9A5A6C2B6978220087E02F /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -147,7 +153,7 @@
 				FA9A5A642B690A2A0087E02F /* GoogleService-Info.plist */,
 				FA3085692B681FA700E730FC /* AppDelegate.swift */,
 				FA30856B2B681FA700E730FC /* SceneDelegate.swift */,
-				FA9A5A6A2B6975800087E02F /* payWallViewController.swift */,
+				FA81F33A2B6AC854001BB712 /* Extentions.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -156,6 +162,8 @@
 			isa = PBXGroup;
 			children = (
 				FA3085742B681FAA00E730FC /* LaunchScreen.storyboard */,
+				FA81F3382B6AC6A2001BB712 /* PayWallHeaderView.swift */,
+				FA81F33C2B6AD81E001BB712 /* PayWallDescriptionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -174,6 +182,7 @@
 		FA30859B2B6829EC00E730FC /* Core Tabs */ = {
 			isa = PBXGroup;
 			children = (
+				FA81F3372B6AC0F8001BB712 /* Other ViewsController */,
 				FA3085862B68231D00E730FC /* TabBarViewController.swift */,
 				FA3085842B6822C800E730FC /* ProfileViewController.swift */,
 				FA30856D2B681FA700E730FC /* HomeViewController.swift */,
@@ -198,6 +207,14 @@
 				FA30858C2B68257B00E730FC /* ViewPostViewController.swift */,
 			);
 			name = Posts;
+			sourceTree = "<group>";
+		};
+		FA81F3372B6AC0F8001BB712 /* Other ViewsController */ = {
+			isa = PBXGroup;
+			children = (
+				FA9A5A6A2B6975800087E02F /* PayWallViewController.swift */,
+			);
+			path = "Other ViewsController";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -316,12 +333,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA3085892B68253A00E730FC /* SingInViewController.swift in Sources */,
+				FA81F33D2B6AD81E001BB712 /* PayWallDescriptionView.swift in Sources */,
 				FA3085982B68266B00E730FC /* AuthManager.swift in Sources */,
 				FA30858B2B68255800E730FC /* SingUpViewController.swift in Sources */,
 				FA30856E2B681FA700E730FC /* HomeViewController.swift in Sources */,
 				FA30856A2B681FA700E730FC /* AppDelegate.swift in Sources */,
+				FA81F3392B6AC6A2001BB712 /* PayWallHeaderView.swift in Sources */,
 				FA9A5A692B696C890087E02F /* BlogPost.swift in Sources */,
 				FA3085852B6822C800E730FC /* ProfileViewController.swift in Sources */,
+				FA81F33B2B6AC854001BB712 /* Extentions.swift in Sources */,
 				FA9A5A672B696C5B0087E02F /* User.swift in Sources */,
 				FA3085902B6825B300E730FC /* CreateNewPostViewController.swift in Sources */,
 				FA3085942B68261200E730FC /* IAPManager.swift in Sources */,
@@ -330,7 +350,7 @@
 				FA30858D2B68257B00E730FC /* ViewPostViewController.swift in Sources */,
 				FA3085962B68263E00E730FC /* DataBaseManager.swift in Sources */,
 				FA30859A2B68268C00E730FC /* StorageManager.swift in Sources */,
-				FA9A5A6B2B6975800087E02F /* payWallViewController.swift in Sources */,
+				FA9A5A6B2B6975800087E02F /* PayWallViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
