@@ -27,6 +27,7 @@
 		FA81F3392B6AC6A2001BB712 /* PayWallHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA81F3382B6AC6A2001BB712 /* PayWallHeaderView.swift */; };
 		FA81F33B2B6AC854001BB712 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA81F33A2B6AC854001BB712 /* Extentions.swift */; };
 		FA81F33D2B6AD81E001BB712 /* PayWallDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA81F33C2B6AD81E001BB712 /* PayWallDescriptionView.swift */; };
+		FA81F33F2B6C108F001BB712 /* SignInHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA81F33E2B6C108F001BB712 /* SignInHeaderView.swift */; };
 		FA9A5A652B690A2C0087E02F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA9A5A642B690A2A0087E02F /* GoogleService-Info.plist */; };
 		FA9A5A672B696C5B0087E02F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9A5A662B696C5B0087E02F /* User.swift */; };
 		FA9A5A692B696C890087E02F /* BlogPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9A5A682B696C890087E02F /* BlogPost.swift */; };
@@ -58,6 +59,7 @@
 		FA81F3382B6AC6A2001BB712 /* PayWallHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayWallHeaderView.swift; sourceTree = "<group>"; };
 		FA81F33A2B6AC854001BB712 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 		FA81F33C2B6AD81E001BB712 /* PayWallDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayWallDescriptionView.swift; sourceTree = "<group>"; };
+		FA81F33E2B6C108F001BB712 /* SignInHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInHeaderView.swift; sourceTree = "<group>"; };
 		FA9A5A642B690A2A0087E02F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FA9A5A662B696C5B0087E02F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FA9A5A682B696C890087E02F /* BlogPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogPost.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				FA3085742B681FAA00E730FC /* LaunchScreen.storyboard */,
 				FA81F3382B6AC6A2001BB712 /* PayWallHeaderView.swift */,
 				FA81F33C2B6AD81E001BB712 /* PayWallDescriptionView.swift */,
+				FA81F33E2B6C108F001BB712 /* SignInHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				FA81F3392B6AC6A2001BB712 /* PayWallHeaderView.swift in Sources */,
 				FA9A5A692B696C890087E02F /* BlogPost.swift in Sources */,
 				FA3085852B6822C800E730FC /* ProfileViewController.swift in Sources */,
+				FA81F33F2B6C108F001BB712 /* SignInHeaderView.swift in Sources */,
 				FA81F33B2B6AC854001BB712 /* Extentions.swift in Sources */,
 				FA9A5A672B696C5B0087E02F /* User.swift in Sources */,
 				FA3085902B6825B300E730FC /* CreateNewPostViewController.swift in Sources */,

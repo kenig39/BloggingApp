@@ -38,5 +38,20 @@ final class DatabaseManager {
        user: User,
        complition: @escaping(Bool) -> Void
       ){
+          let documentId = user.email
+              .replacingOccurrences(of: ".", with: ".")
+              .replacingOccurrences(of: "@", with: "_")
+          
+          let data = [
+            "email": user.email,
+            "name": user.name
+          ]
+          database
+              .collection("users")
+              .document(documentId)
+              .setData(data) { error in
+                  complition(error == nil)
+                  
+              }
     }
 }
