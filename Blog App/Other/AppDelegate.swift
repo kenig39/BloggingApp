@@ -1,4 +1,4 @@
-
+import Purchases
 import Firebase
 import UIKit
 
@@ -8,7 +8,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
         FirebaseApp.configure()
+        
+        Purchases.configure(withAPIKey: "mgByuJPTRCAzIyGwIATAhYNgsYXpNcZB")
+        
+        IAPManager.shared.getSubscriptionStatus(complition: nil)
+        
+        
+        IAPManager.shared.fetchPackages(complition: { package in
+            guard let package = package else {
+                return
+            }
+            print("Got package")
+            IAPManager.shared.subscribe(package: package) { success in
+                print("Success: \(success)")
+            }
+        })
+        
+        
         return true
     }
 

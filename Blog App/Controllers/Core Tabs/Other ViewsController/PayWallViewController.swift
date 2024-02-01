@@ -90,11 +90,36 @@ class PayWallViewController: UIViewController {
     }
     
     @objc private func didTapSubscribe(){
-        
+        IAPManager.shared.fetchPackages(complition: { package in
+            guard let package = package else {return}
+            IAPManager.shared.subscribe(package: package, complition: { succes in
+                print("Purchse: \(succes)")
+                DispatchQueue.main.async {
+                    if succes {
+                        self.dismiss(animated: true)
+                    } else {
+                        let Alert = UIAlertController(title: "Subscription Failed", message: "We were unable to complete the transaction", preferredStyle: .alert)
+                        Alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel))
+                        self.present(Alert, animated: true)
+                    }
+                }
+            })
+        })
     }
     
     @objc private func didTapRestore(){
-        
+        IAPManager.shared.restorePurchases(complition: { [weak self] succes in
+            print("Restored: \(succes)")
+            DispatchQueue.main.async {
+                if succes {
+                    self?.dismiss(animated: true)
+                } else {
+                    let Alert = UIAlertController(title: "Restoration Failed", message: "We were unable to restore the previous transaction", preferredStyle: .alert)
+                    Alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel))
+                    self?.present(Alert, animated: true)
+                }
+            }
+        })
     }
 
         
