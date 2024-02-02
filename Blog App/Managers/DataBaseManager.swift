@@ -54,4 +54,25 @@ final class DatabaseManager {
                   
               }
     }
+    
+    public func getUser(email: String, complition: @escaping(User?)-> Void){
+        let documentId = email
+            .replacingOccurrences(of: ".", with: ".")
+            .replacingOccurrences(of: "@", with: "_")
+        
+        database
+            .collection("users")
+            .document(documentId)
+            .getDocument(completion: { snapShot, error  in
+                guard let data = snapShot?.data() as? [String:String],
+                      let name = data["name"],
+                      error == nil else {
+                    return
+                }
+                
+                let ref = data["profile_photo"]
+                let user = User(name: name, email: email, profilePictureRef: ref)
+                complition(user)
+            })
+    }
 }

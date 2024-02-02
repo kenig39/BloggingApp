@@ -5,7 +5,14 @@ import UIKit
 class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
 
     
+    private var user: User?
     
+    private let tableView: UITableView = {
+          let tableView = UITableView()
+          tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+         return tableView
+      }()
+      
     
     let currentEmail: String
     
@@ -18,18 +25,14 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         fatalError("init(coder:) has not been implemented")
     }
     
-    private let tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.register(UITableView.self, forCellReuseIdentifier: "cell")
-       return tableView
-    }()
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         setUpSignOutButton()
-       setUpTableView()
+        setUpTableView()
+        title = "Profile"
       
     }
     
@@ -37,6 +40,64 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
+        setUpTableHeader()
+        fetchProfileData()
+    }
+    
+  
+    
+    private func setUpTableHeader(profilePhotoRef: String? = nil, name: String? = nil){
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.with, height: view.with/1.5))
+        headerView.backgroundColor = .systemBlue
+        tableView.tableHeaderView = headerView
+        headerView.clipsToBounds = true
+        
+        //Profile Picture
+        let profilePhoto = UIImageView(image: UIImage(systemName: "person.circle"))
+        profilePhoto.tintColor = .white
+        profilePhoto.contentMode = .scaleAspectFit
+        profilePhoto.frame = CGRect(x: (view.with-(view.with/4))/2,
+                                    y: (headerView.height-(view.with/4))/3,
+                                    width: view.with/4,
+                                    height: view.with/4)
+        
+        headerView.addSubview(profilePhoto)
+        
+        //Email
+        
+        let emailLabel = UILabel(frame: CGRect(x: 20,
+                                               y: profilePhoto.bottom+15,
+                                               width: view.with-40,
+                                               height: 100))
+        headerView.addSubview(emailLabel)
+        emailLabel.text = currentEmail
+        emailLabel.textAlignment = .center
+        emailLabel.textColor = .white
+        emailLabel.font = .systemFont(ofSize: 25, weight: .bold)
+        
+        if let name = name {
+            title = name
+        }
+        if let ref = profilePhotoRef {
+            
+        }
+        
+    }
+    
+    
+    private func fetchProfileData(){
+        DatabaseManager.shared.getUser(email: currentEmail, complition: { [weak self] user in
+            guard let user = user else {
+                return
+            }
+            self?.user = user
+            
+            DispatchQueue.main.async {
+                self?.setUpTableHeader(profilePhotoRef: user.profilePictureRef,
+                                       name: user.name)
+            }
+            
+        })
     }
     
     override func viewDidLayoutSubviews() {
