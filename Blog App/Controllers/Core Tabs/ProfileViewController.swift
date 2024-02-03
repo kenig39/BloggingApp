@@ -61,8 +61,10 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                                     y: (headerView.height-(view.with/4))/3,
                                     width: view.with/4,
                                     height: view.with/4)
-        profilePhoto.isUserInteractionEnabled = true
         
+        profilePhoto.isUserInteractionEnabled = true
+        profilePhoto.layer.masksToBounds = true
+        profilePhoto.layer.cornerRadius = profilePhoto.with/2
         headerView.addSubview(profilePhoto)
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTapProfilePhoto))
         profilePhoto.addGestureRecognizer(tap)
@@ -82,11 +84,31 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         if let name = name {
             title = name
         }
+        
         if let ref = profilePhotoRef {
+            print("Foto select \(ref)")
+            
+            StorageManager.shared.downloadUrlForProfilePicture(path: ref) { url in
+                guard let url = url else {
+                    return
+                }
+                let task = URLSession.shared.dataTask(with: url, completionHandler: { data, _, _ in
+                    guard let data = data else {
+                        return
+                    }
+                    DispatchQueue.main.async {
+                        profilePhoto.image = UIImage(data: data)
+                    }
+                })
+                   
+                task.resume()
+                }
+               
+            }
             
         }
         
-    }
+    
     
     @objc private func didTapProfilePhoto(){
         guard let myEmail = UserDefaults.standard.string(forKey: "email"),
@@ -175,6 +197,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true)
         guard let image = info[.editedImage] as? UIImage else {
             return
         }
@@ -183,17 +206,17 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
                                                        image: image,
                                                        completion: { [weak self] succes in
             guard let strongSelf = self else {return}
-            
-            DatabaseManager.shared.upDateProfileManager(email: strongSelf.currentEmail, completion: { updated in
-                guard updated else {
-                    return
-                }
-                DispatchQueue.main.async {
-                    strongSelf.fetchProfileData()
-                }
-                
-            })
+            if succes {
+                //Update dataBase
+                DatabaseManager.shared.upDateProfileManager(email: strongSelf.currentEmail, completion: { updated in
+                    guard updated else {
+                        return
+                    }
+                    DispatchQueue.main.async {
+                        strongSelf.fetchProfileData()
+                    }
+                })
+            }
         })
     }
-    
 }

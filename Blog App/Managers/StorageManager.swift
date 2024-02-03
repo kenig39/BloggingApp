@@ -49,10 +49,14 @@ final class StorageManager {
        
     }
     
-    public func downloadUrlPostHeader(
-        blogPost: BlogPost,
+    public func downloadUrlForProfilePicture(
+        path: String,
         complition: @escaping (URL?) -> Void
     ){
+        container.reference(withPath: path)
+            .downloadURL(completion: { url, _ in
+                complition(url)
+            })
         
     }
         

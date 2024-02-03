@@ -57,7 +57,7 @@ class SingUpViewController: UITabBarController {
     private let signUpButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .systemGreen
-        button.setTitle("Create", for: .normal)
+        button.setTitle("Create Account", for: .normal)
         button.setTitleColor(.white, for: .normal)
         return button
     }()
@@ -67,7 +67,7 @@ class SingUpViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Sign In"
+        title = "Create Account"
         view.backgroundColor = .systemBackground
         view.addSubview(headerView)
         view.addSubview(nameTextField)
@@ -107,7 +107,7 @@ class SingUpViewController: UITabBarController {
         //Create User
         AuthManager.shared.signUp(email: email, password: password, complition: { [weak self] succes in
             if succes {
-                let newUser = User(name: name, email: password, profilePictureRef: nil)
+                let newUser = User(name: name, email: email, profilePictureRef: nil)
                 DatabaseManager.shared.insert(user: newUser, complition: { inserted in
                     guard inserted else {
                         return

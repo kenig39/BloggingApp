@@ -16,7 +16,6 @@ final class DatabaseManager {
     private init(){}
     
     public func insert(
-       
     blogPost: BlogPost,
         user: User,
         complition: @escaping(Bool) -> Void
@@ -42,7 +41,7 @@ final class DatabaseManager {
        complition: @escaping(Bool) -> Void
       ){
           let documentId = user.email
-              .replacingOccurrences(of: ".", with: ".")
+              .replacingOccurrences(of: ".", with: "_")
               .replacingOccurrences(of: "@", with: "_")
           
           let data = [
@@ -97,12 +96,9 @@ final class DatabaseManager {
             }
             data["Profile_photo"] = photoReference
             
-            dbRef.setData(data) { error in
-                completion(error == nil)
-                
+            dbRef.setData(data){ error in
+                    completion(error == nil)
             }
-            
-            
         })
     }
 }
