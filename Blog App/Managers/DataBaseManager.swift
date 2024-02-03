@@ -34,6 +34,9 @@ final class DatabaseManager {
        complition: @escaping([BlogPost]) -> Void
       ){
     }
+    
+    
+    
     public func insert(
        user: User,
        complition: @escaping(Bool) -> Void
@@ -74,5 +77,32 @@ final class DatabaseManager {
                 let user = User(name: name, email: email, profilePictureRef: ref)
                 complition(user)
             })
+    }
+    
+    func upDateProfileManager(email: String, completion: @escaping(Bool) -> Void){
+        let path = email
+            .replacingOccurrences(of: "@", with: "_")
+            .replacingOccurrences(of: ".", with: "_")
+        
+        let photoReference = "profile_pictures/\(path)/photo.png"
+        
+        let dbRef = database
+            .collection("users")
+            .document(path)
+            
+        
+        dbRef.getDocument(completion: { snapShot, error in
+            guard var data = snapShot?.data(), error == nil else {
+                return
+            }
+            data["Profile_photo"] = photoReference
+            
+            dbRef.setData(data) { error in
+                completion(error == nil)
+                
+            }
+            
+            
+        })
     }
 }

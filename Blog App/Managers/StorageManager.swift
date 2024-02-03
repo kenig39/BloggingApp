@@ -5,7 +5,7 @@ import FirebaseStorage
 final class StorageManager {
     static let shared = StorageManager()
         
-    private let container = Storage.storage().reference()
+    private let container = Storage.storage()
         
         private init(){}
     
@@ -17,11 +17,28 @@ final class StorageManager {
         
     }
     
-    public func downLoadUrlForProfilePicture(
-        user: User,
-        complition: @escaping(URL?) -> Void
+    public func updateProfilePicture(
+        email: String,
+        image: UIImage?,
+        complition: @escaping(Bool) -> Void
     ){
+        let path = email
+            .replacingOccurrences(of: "@", with: "_")
+            .replacingOccurrences(of: ".", with: "_")
         
+        guard let pngData = image?.pngData() else {
+            return
+        }
+        
+        container
+            .reference(withPath: "profile_pictures/\(path)/photo.png")
+            .putData(pngData, completion: { metadata , error in
+                guard metadata != nil, error == nil else {
+                    complition(false)
+                    return
+                }
+                complition(true)
+            })
     }
     
     public func uploadBloagHeaderImage(
@@ -29,7 +46,7 @@ final class StorageManager {
         image: UIImage?,
         complition: @escaping(Bool) -> Void
     ){
-        
+       
     }
     
     public func downloadUrlPostHeader(

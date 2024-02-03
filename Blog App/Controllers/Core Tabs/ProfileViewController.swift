@@ -49,6 +49,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     private func setUpTableHeader(profilePhotoRef: String? = nil, name: String? = nil){
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.with, height: view.with/1.5))
         headerView.backgroundColor = .systemBlue
+        headerView.isUserInteractionEnabled = true
         tableView.tableHeaderView = headerView
         headerView.clipsToBounds = true
         
@@ -60,8 +61,11 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                                     y: (headerView.height-(view.with/4))/3,
                                     width: view.with/4,
                                     height: view.with/4)
+        profilePhoto.isUserInteractionEnabled = true
         
         headerView.addSubview(profilePhoto)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapProfilePhoto))
+        profilePhoto.addGestureRecognizer(tap)
         
         //Email
         
@@ -84,6 +88,18 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
     }
     
+    @objc private func didTapProfilePhoto(){
+        guard let myEmail = UserDefaults.standard.string(forKey: "email"),
+        myEmail == currentEmail else {
+            return
+        }
+        
+        let picker = UIImagePickerController()
+        picker.sourceType = .photoLibrary
+        picker.delegate = self
+        picker.allowsEditing = true
+        present(picker, animated: true)
+    }
     
     private func fetchProfileData(){
         DatabaseManager.shared.getUser(email: currentEmail, complition: { [weak self] user in
@@ -151,6 +167,33 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         return cell
     }
-  
+}
 
+extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[.editedImage] as? UIImage else {
+            return
+        }
+        
+        StorageManager.shared.uploadUserProfilePicture(email: currentEmail,
+                                                       image: image,
+                                                       completion: { [weak self] succes in
+            guard let strongSelf = self else {return}
+            
+            DatabaseManager.shared.upDateProfileManager(email: strongSelf.currentEmail, completion: { updated in
+                guard updated else {
+                    return
+                }
+                DispatchQueue.main.async {
+                    strongSelf.fetchProfileData()
+                }
+                
+            })
+        })
+    }
+    
 }
