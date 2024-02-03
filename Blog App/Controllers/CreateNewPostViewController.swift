@@ -9,6 +9,8 @@ import UIKit
 
 class CreateNewPostViewController: UITabBarController {
     
+    private var selectedHeaderIndex: UIImage?
+    
     //Title to field
     private let titleField: UITextField = {
        let textField = UITextField()
@@ -46,6 +48,18 @@ class CreateNewPostViewController: UITabBarController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         configureButton()
+        view.addSubview(headerImageView)
+        view.addSubview(textView)
+        view.addSubview(titleField)
+        
+    }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        titleField.frame = CGRect(x: 10, y: view.safeAreaInsets.top, width: view.with-20, height: 50)
+        
+        headerImageView.frame = CGRect(x: 0, y: titleField.bottom+5, width: view.with, height: 160)
+        textView.frame = CGRect(x: 10, y: headerImageView.bottom+10, width: view.with-20, height: view.height-210-view.safeAreaInsets.top)
     }
     
     
