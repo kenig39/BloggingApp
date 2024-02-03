@@ -14,31 +14,29 @@ final class StorageManager {
         image: UIImage?,
         completion: @escaping(Bool) -> Void
     ){
-        
-    }
-    
-    public func updateProfilePicture(
-        email: String,
-        image: UIImage?,
-        complition: @escaping(Bool) -> Void
-    ){
         let path = email
             .replacingOccurrences(of: "@", with: "_")
             .replacingOccurrences(of: ".", with: "_")
         
         guard let pngData = image?.pngData() else {
-            return
-        }
-        
+            return }
         container
             .reference(withPath: "profile_pictures/\(path)/photo.png")
             .putData(pngData, completion: { metadata , error in
                 guard metadata != nil, error == nil else {
-                    complition(false)
+                    completion(false)
                     return
                 }
-                complition(true)
+                completion(true)
             })
+    }
+    
+    public func downloadUrlForProfilePicture(
+        user: String,
+        complition: @escaping(Bool) -> Void
+    ){
+        
+       
     }
     
     public func uploadBloagHeaderImage(

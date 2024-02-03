@@ -1,5 +1,5 @@
 import Purchases
-import Firebase
+import FirebaseCore
 import UIKit
 
 @main

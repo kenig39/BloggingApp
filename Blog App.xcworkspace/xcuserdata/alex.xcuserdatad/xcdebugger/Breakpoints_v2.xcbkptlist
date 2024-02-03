@@ -3,4 +3,54 @@
    uuid = "F1FF472B-B337-4C23-B4A8-97954B9F26CA"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "32F6EA70-DD9B-40D1-99B0-1B34E64FAA7A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Blog App/Controllers/Core Tabs/ProfileViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "setUpTableHeader(profilePhotoRef:name:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "32F6EA70-DD9B-40D1-99B0-1B34E64FAA7A - c1cfa4d5c05acfee"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Blog_App.ProfileViewController.setUpTableHeader(profilePhotoRef: Swift.Optional&lt;Swift.String&gt;, name: Swift.Optional&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "Blog App"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alex/Desktop/GitHub/BloggingApp/Blog%20App/Controllers/Core%20Tabs/ProfileViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "100"
+                  endingLineNumber = "100"
+                  offsetFromSymbolStart = "4509">
+               </Location>
+               <Location
+                  uuid = "32F6EA70-DD9B-40D1-99B0-1B34E64FAA7A - d395d07bfd4baf39"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.URL&gt;) -&gt; () in Blog_App.ProfileViewController.setUpTableHeader(profilePhotoRef: Swift.Optional&lt;Swift.String&gt;, name: Swift.Optional&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "Blog App"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alex/Desktop/GitHub/BloggingApp/Blog%20App/Controllers/Core%20Tabs/ProfileViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "101"
+                  endingLineNumber = "101"
+                  offsetFromSymbolStart = "195">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

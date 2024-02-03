@@ -36,6 +36,11 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
       
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableView.frame = view.bounds
+    }
+    
     private func setUpTableView(){
         view.addSubview(tableView)
         tableView.delegate = self
@@ -46,7 +51,10 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
   
     
-    private func setUpTableHeader(profilePhotoRef: String? = nil, name: String? = nil){
+    private func setUpTableHeader
+    (profilePhotoRef: String? = nil,
+    name: String? = nil) {
+        
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.with, height: view.with/1.5))
         headerView.backgroundColor = .systemBlue
         headerView.isUserInteractionEnabled = true
@@ -66,6 +74,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         profilePhoto.layer.masksToBounds = true
         profilePhoto.layer.cornerRadius = profilePhoto.with/2
         headerView.addSubview(profilePhoto)
+        
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTapProfilePhoto))
         profilePhoto.addGestureRecognizer(tap)
         
@@ -86,7 +95,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
         if let ref = profilePhotoRef {
-            print("Foto select \(ref)")
+            print("found photo select \(ref)")
             
             StorageManager.shared.downloadUrlForProfilePicture(path: ref) { url in
                 guard let url = url else {
@@ -131,17 +140,15 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             self?.user = user
             
             DispatchQueue.main.async {
-                self?.setUpTableHeader(profilePhotoRef: user.profilePictureRef,
+                self?.setUpTableHeader(profilePhotoRef:
+                                        user.profilePictureRef,
                                        name: user.name)
             }
             
         })
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        tableView.frame = view.bounds
-    }
+   
     
     
     private func setUpSignOutButton(){
@@ -204,9 +211,9 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         
         StorageManager.shared.uploadUserProfilePicture(email: currentEmail,
                                                        image: image,
-                                                       completion: { [weak self] succes in
+                                                       completion: { [weak self] success in
             guard let strongSelf = self else {return}
-            if succes {
+            if success {
                 //Update dataBase
                 DatabaseManager.shared.upDateProfileManager(email: strongSelf.currentEmail, completion: { updated in
                     guard updated else {

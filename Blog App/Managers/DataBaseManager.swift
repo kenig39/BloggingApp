@@ -78,7 +78,10 @@ final class DatabaseManager {
             })
     }
     
-    func upDateProfileManager(email: String, completion: @escaping(Bool) -> Void){
+    func upDateProfileManager(
+        email: String,
+    completion: @escaping(Bool) -> Void) {
+        
         let path = email
             .replacingOccurrences(of: "@", with: "_")
             .replacingOccurrences(of: ".", with: "_")
