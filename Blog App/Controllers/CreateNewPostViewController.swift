@@ -92,20 +92,41 @@ class CreateNewPostViewController: UITabBarController {
         guard let title = titleField.text,
               let body = textView.text,
               let headerImage = selectedHeaderImage,
+              let email = UserDefaults.standard.string(forKey: "email"),
               !title.trimmingCharacters(in: .whitespaces).isEmpty,
               !body.trimmingCharacters(in: .whitespaces).isEmpty
               
         else {
             return
         }
+        let newPostId = UUID().uuidString
+        
         //upload header Image
+        StorageManager.shared.uploadBloagHeaderImage(email: email,
+                                                     image: headerImage,
+                                                     postid: newPostId,
+                                                     completion: { success in
+            guard success else {
+                return
+            }
+            StorageManager.shared.downloadUrlForPostHeder(email: email,
+                                                          postId: newPostId,
+                                                          completion: { url in
+                guard let headerUrl = url else {
+                    return
+                }
+                //insert of post into DB
+                let post = BlogPost(indentifier: newPostId,
+                                    title: title,
+                                    timestamp: Date().timeIntervalSince1970,
+                                    headerImageUrl: nil,
+                                    text: body)
+                
+            })
+            
+        })
         
-        
-        let post = BlogPost(indentifier: UUID().uuidString,
-                            title: title,
-                            timestamp: Date().timeIntervalSince1970,
-                            headerImageUrl: nil,
-                            text: body)
+       
     }
         
 }
