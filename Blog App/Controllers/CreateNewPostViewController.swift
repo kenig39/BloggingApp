@@ -95,8 +95,13 @@ class CreateNewPostViewController: UITabBarController {
               let email = UserDefaults.standard.string(forKey: "email"),
               !title.trimmingCharacters(in: .whitespaces).isEmpty,
               !body.trimmingCharacters(in: .whitespaces).isEmpty
-              
         else {
+            
+            let alert = UIAlertController(title: "Enter Post Details", message: "Please enter a title body, and select a imge to ", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel))
+                            
+            present(alert, animated: true)
+            
             return
         }
         let newPostId = UUID().uuidString
@@ -113,8 +118,10 @@ class CreateNewPostViewController: UITabBarController {
                                                           postId: newPostId,
                                                           completion: { url in
                 guard let headerUrl = url else {
+                    print("Failed to upload url for header")
                     return
                 }
+                
                 //insert of post into DB
                 let post = BlogPost(indentifier: newPostId,
                                     title: title,
@@ -122,16 +129,23 @@ class CreateNewPostViewController: UITabBarController {
                                     headerImageUrl: headerUrl,
                                     text: body)
                 
-            })
-            DatabaseManager.shared.insert(blogPost: post, email: email, complition: { in
+                DatabaseManager.shared.insert(blogPost: post, email: email, complition: {[weak self] posted in
+                    guard posted else {
+                        print("Faled to post new Blog")
+                        return
+                    }
+                    
+                    DispatchQueue.main.async {
+                        self?.didTapCancel()
+                    }
+                    
+                })
                 
             })
             
+            
         })
-        
-       
     }
-        
 }
 extension CreateNewPostViewController: UIImagePickerControllerDelegate , UINavigationControllerDelegate {
  
