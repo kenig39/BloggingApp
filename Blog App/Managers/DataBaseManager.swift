@@ -17,11 +17,30 @@ final class DatabaseManager {
     
     public func insert(
     blogPost: BlogPost,
-        user: User,
+    email: String,
         complition: @escaping(Bool) -> Void
     ){
+        let userEmail = email
+            .replacingOccurrences(of: ".", with: "_")
+            .replacingOccurrences(of: "@", with: "_")
         
-    }
+        let data: [String: Any] = [
+            "id": blogPost,
+            "title": blogPost.indentifier,
+            "body": blogPost.text,
+            "created": blogPost.timestamp,
+            "header": blogPost.headerImageUrl?.absoluteString ?? ""
+          
+        ]
+        database
+            .collection("user")
+            .document(userEmail)
+            .collection("post")
+            .addDocument(data: data) {error in
+                complition(error == nil)
+                }
+           
+            }
     
      public func getAllPosts(
         complition: @escaping([BlogPost]) -> Void

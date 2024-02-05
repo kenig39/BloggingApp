@@ -119,8 +119,11 @@ class CreateNewPostViewController: UITabBarController {
                 let post = BlogPost(indentifier: newPostId,
                                     title: title,
                                     timestamp: Date().timeIntervalSince1970,
-                                    headerImageUrl: nil,
+                                    headerImageUrl: headerUrl,
                                     text: body)
+                
+            })
+            DatabaseManager.shared.insert(blogPost: post, email: email, complition: { in
                 
             })
             
