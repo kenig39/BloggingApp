@@ -61,10 +61,21 @@ final class DatabaseManager {
               .document(userEmail)
               .collection("posts")
               .getDocuments(completion: { snapshot, error in
-                  guard let document = snapshot?.documents.compactMap{$0.data()}, error == nil else {
+                  guard let documents = snapshot?.documents.compactMap{$0.data()}, error == nil else {
                       return
                   }
                   
+                  let posts: [BlogPost] = documents.compactMap({dictionary in
+                      guard let id = dictionary["id"] as? String,
+                            let title = dictionary["title"],
+                            
+                      
+                      let post = BlogPost(indentifier: <#T##String#>,
+                                          title: <#T##String#>,
+                                          timestamp: <#T##TimeInterval#>,
+                                          headerImageUrl: <#T##URL?#>,
+                                          text: <#T##String#>)
+                  })
               })
     }
     
