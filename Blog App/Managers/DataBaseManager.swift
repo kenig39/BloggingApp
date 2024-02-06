@@ -61,7 +61,7 @@ final class DatabaseManager {
               .document(userEmail)
               .collection("posts")
               .getDocuments(completion: { snapshot, error in
-                  guard let documents = snapshot?.documents.compactMap{$0.data()}, error == nil else {
+                  guard let documents = snapshot?.documents.compactMap({$0.data()}), error == nil else {
                       return
                   }
                   
@@ -76,12 +76,14 @@ final class DatabaseManager {
                       }
                             
                       
-                      let post = BlogPost(indentifier: <#T##String#>,
-                                          title: <#T##String#>,
-                                          timestamp: <#T##TimeInterval#>,
-                                          headerImageUrl: <#T##URL?#>,
-                                          text: <#T##String#>)
+                      let post = BlogPost(indentifier: id,
+                                          title: title,
+                                          timestamp: created,
+                                          headerImageUrl: URL(string: headerImageUrl),
+                                          text: body)
+                      return post
                   })
+                  complition(posts)
               })
     }
     
