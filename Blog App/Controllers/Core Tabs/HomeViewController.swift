@@ -24,8 +24,8 @@ class HomeViewController: UIViewController {
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        composeButton.frame = CGRect(x: view.frame.width - 80 - 16,
-                                     y: view.frame.height - 80 - 16 - view.safeAreaInsets.bottom,
+        composeButton.frame = CGRect(x: view.frame.width - 80,
+                                     y: view.frame.height - 80- view.safeAreaInsets.bottom,
                                      width: 60,
                                      height: 60)
     }

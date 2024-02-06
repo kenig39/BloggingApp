@@ -25,7 +25,7 @@ final class DatabaseManager {
             .replacingOccurrences(of: "@", with: "_")
         
         let data: [String: Any] = [
-            "id": blogPost,
+            "id": blogPost.indentifier,
             "title": blogPost.indentifier,
             "body": blogPost.text,
             "created": blogPost.timestamp,
@@ -36,7 +36,8 @@ final class DatabaseManager {
             .collection("user")
             .document(userEmail)
             .collection("post")
-            .addDocument(data: data) {error in
+            .document(blogPost.indentifier)
+            .setData(data) { error in
                 complition(error == nil)
                 }
            
@@ -48,9 +49,23 @@ final class DatabaseManager {
      }
     
     public func getPosts(
-      for user: User,
+      for email: String,
        complition: @escaping([BlogPost]) -> Void
       ){
+          let userEmail = email
+              .replacingOccurrences(of: ".", with: "_")
+              .replacingOccurrences(of: "@", with: "_")
+          
+          database
+              .collection("users")
+              .document(userEmail)
+              .collection("posts")
+              .getDocuments(completion: { snapshot, error in
+                  guard let document = snapshot?.documents.compactMap{$0.data()}, error == nil else {
+                      return
+                  }
+                  
+              })
     }
     
     

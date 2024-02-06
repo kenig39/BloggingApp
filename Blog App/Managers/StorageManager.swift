@@ -51,6 +51,7 @@ final class StorageManager {
         
         guard let pngData = image.pngData() else {
             return }
+        
         container
             .reference(withPath: "post_headers/\(path)/\(postid).png")
             .putData(pngData, completion: { metadata , error in

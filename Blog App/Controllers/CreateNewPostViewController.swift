@@ -39,6 +39,7 @@ class CreateNewPostViewController: UITabBarController {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.isUserInteractionEnabled = true
+        imageView.clipsToBounds = true
         imageView.image = UIImage(systemName: "photo")
         imageView.backgroundColor = .tertiarySystemBackground
         return imageView
@@ -94,26 +95,28 @@ class CreateNewPostViewController: UITabBarController {
               let headerImage = selectedHeaderImage,
               let email = UserDefaults.standard.string(forKey: "email"),
               !title.trimmingCharacters(in: .whitespaces).isEmpty,
-              !body.trimmingCharacters(in: .whitespaces).isEmpty
-        else {
+              !body.trimmingCharacters(in: .whitespaces).isEmpty else {
             
-            let alert = UIAlertController(title: "Enter Post Details", message: "Please enter a title body, and select a imge to ", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Enter Post Details", message: "Please enter a title body, and select a image to ", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel))
                             
             present(alert, animated: true)
             
             return
         }
+        
+        print("Tap to post ................")
+        
         let newPostId = UUID().uuidString
         
         //upload header Image
-        StorageManager.shared.uploadBloagHeaderImage(email: email,
-                                                     image: headerImage,
-                                                     postid: newPostId,
-                                                     completion: { success in
-            guard success else {
-                return
-            }
+        StorageManager.shared.uploadBloagHeaderImage(
+            email: email,
+            image: headerImage,
+            postid: newPostId,
+            completion: { success in
+            guard success else { return }
+            
             StorageManager.shared.downloadUrlForPostHeder(email: email,
                                                           postId: newPostId,
                                                           completion: { url in
@@ -131,7 +134,7 @@ class CreateNewPostViewController: UITabBarController {
                 
                 DatabaseManager.shared.insert(blogPost: post, email: email, complition: {[weak self] posted in
                     guard posted else {
-                        print("Faled to post new Blog")
+                        print("Faled to post new Blog Article")
                         return
                     }
                     
@@ -143,10 +146,11 @@ class CreateNewPostViewController: UITabBarController {
                 
             })
             
-            
         })
     }
 }
+
+
 extension CreateNewPostViewController: UIImagePickerControllerDelegate , UINavigationControllerDelegate {
  
     func  imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
