@@ -67,7 +67,13 @@ final class DatabaseManager {
                   
                   let posts: [BlogPost] = documents.compactMap({dictionary in
                       guard let id = dictionary["id"] as? String,
-                            let title = dictionary["title"],
+                            let title = dictionary["title"] as? String,
+                            let body = dictionary["body"] as? String,
+                            let created = dictionary["created"] as? TimeInterval,
+                            let headerImageUrl = dictionary["headerImageurl"] as? String else {
+                          print("Invalid post fetch conversion")
+                          return nil
+                      }
                             
                       
                       let post = BlogPost(indentifier: <#T##String#>,
