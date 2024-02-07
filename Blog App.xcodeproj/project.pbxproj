@@ -24,6 +24,8 @@
 		FA3085962B68263E00E730FC /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3085952B68263D00E730FC /* DataBaseManager.swift */; };
 		FA3085982B68266B00E730FC /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3085972B68266B00E730FC /* AuthManager.swift */; };
 		FA30859A2B68268C00E730FC /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3085992B68268C00E730FC /* StorageManager.swift */; };
+		FA388B292B74100E00945A0F /* PostPreviewTableViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA388B282B74100E00945A0F /* PostPreviewTableViewTableViewCell.swift */; };
+		FA388B2B2B74103B00945A0F /* PostHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA388B2A2B74103B00945A0F /* PostHeaderTableViewCell.swift */; };
 		FA81F3392B6AC6A2001BB712 /* PayWallHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA81F3382B6AC6A2001BB712 /* PayWallHeaderView.swift */; };
 		FA81F33B2B6AC854001BB712 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA81F33A2B6AC854001BB712 /* Extentions.swift */; };
 		FA81F33D2B6AD81E001BB712 /* PayWallDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA81F33C2B6AD81E001BB712 /* PayWallDescriptionView.swift */; };
@@ -57,6 +59,8 @@
 		FA3085952B68263D00E730FC /* DataBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
 		FA3085972B68266B00E730FC /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		FA3085992B68268C00E730FC /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		FA388B282B74100E00945A0F /* PostPreviewTableViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPreviewTableViewTableViewCell.swift; sourceTree = "<group>"; };
+		FA388B2A2B74103B00945A0F /* PostHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		FA81F3382B6AC6A2001BB712 /* PayWallHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayWallHeaderView.swift; sourceTree = "<group>"; };
 		FA81F33A2B6AC854001BB712 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 		FA81F33C2B6AD81E001BB712 /* PayWallDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayWallDescriptionView.swift; sourceTree = "<group>"; };
@@ -166,6 +170,7 @@
 		FA3085832B68222C00E730FC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FA388B272B740F9100945A0F /* Cells */,
 				FA3085742B681FAA00E730FC /* LaunchScreen.storyboard */,
 				FA81F3382B6AC6A2001BB712 /* PayWallHeaderView.swift */,
 				FA81F33C2B6AD81E001BB712 /* PayWallDescriptionView.swift */,
@@ -213,6 +218,15 @@
 				FA30858C2B68257B00E730FC /* ViewPostViewController.swift */,
 			);
 			name = Posts;
+			sourceTree = "<group>";
+		};
+		FA388B272B740F9100945A0F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				FA388B282B74100E00945A0F /* PostPreviewTableViewTableViewCell.swift */,
+				FA388B2A2B74103B00945A0F /* PostHeaderTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		FA81F3372B6AC0F8001BB712 /* Other ViewsController */ = {
@@ -347,6 +361,7 @@
 				FA30856A2B681FA700E730FC /* AppDelegate.swift in Sources */,
 				FA81F3392B6AC6A2001BB712 /* PayWallHeaderView.swift in Sources */,
 				FA9A5A692B696C890087E02F /* BlogPost.swift in Sources */,
+				FA388B2B2B74103B00945A0F /* PostHeaderTableViewCell.swift in Sources */,
 				FA3085852B6822C800E730FC /* ProfileViewController.swift in Sources */,
 				FA81F33F2B6C108F001BB712 /* SignInHeaderView.swift in Sources */,
 				FA81F33B2B6AC854001BB712 /* Extentions.swift in Sources */,
@@ -356,6 +371,7 @@
 				FA3085872B68231D00E730FC /* TabBarViewController.swift in Sources */,
 				FA30856C2B681FA700E730FC /* SceneDelegate.swift in Sources */,
 				FA30858D2B68257B00E730FC /* ViewPostViewController.swift in Sources */,
+				FA388B292B74100E00945A0F /* PostPreviewTableViewTableViewCell.swift in Sources */,
 				FA3085962B68263E00E730FC /* DataBaseManager.swift in Sources */,
 				FA30859A2B68268C00E730FC /* StorageManager.swift in Sources */,
 				FA9A5A6B2B6975800087E02F /* PayWallViewController.swift in Sources */,
