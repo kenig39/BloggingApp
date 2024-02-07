@@ -190,11 +190,12 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     private var posts: [BlogPost] = []
     
     private func fetchPosts(){
-        guard let email = user?.email else {
-            return
-        }
-        DatabaseManager.shared.getPosts(for: email, complition: { [weak self] posts in
+        
+      print(" Fetching posts ......")
+        
+        DatabaseManager.shared.getPosts(for: currentEmail, complition: { [weak self] posts in
             self?.posts = posts
+            print("Found \(posts.count) posts")
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
             }
