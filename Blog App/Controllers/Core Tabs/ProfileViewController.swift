@@ -211,10 +211,15 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         guard  let cell = tableView.dequeueReusableCell(withIdentifier: PostPreviewTableViewCell.indentifier, for: indexPath) as? PostPreviewTableViewCell else {
             fatalError()
         }
+        
         let post = posts[indexPath.row]
-        cell.textLabel?.text = post.title
+        cell.configure(with: .init(title: post.title, imageUrl: post.headerImageUrl))
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
