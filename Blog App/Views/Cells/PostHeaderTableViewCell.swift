@@ -1,6 +1,15 @@
 
 import UIKit
 
+class PostHeaderTableViewCellModel{
+    let imageUrl: URL?
+    var imageData: Data?
+    init(imageUrl: URL?) {
+        self.imageUrl = imageUrl
+    }
+}
+
+
 class PostHeaderTableViewCell: UITableViewCell {
 
     static let indentifire = "PostHeaderTableViewCell"
@@ -35,14 +44,14 @@ class PostHeaderTableViewCell: UITableViewCell {
         postImageView .image = nil
     }
     
-    func configure(with viewModel: PostPreviewTableViewCellViewModel){
+    func configure(with viewModel: PostHeaderTableViewCellModel){
        
         
         if let data = viewModel.imageData{
             postImageView.image = UIImage(data: data)
             
         }
-        else if let url = viewModel.imageUrl {
+        else if let url = viewModel.imageUrl{
             //fetch image & cache
             
             let task = URLSession.shared.dataTask(with: url) {[weak self] data, _, _ in

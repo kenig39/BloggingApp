@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewPostViewController: UITabBarController {
+class ViewPostViewController: UITabBarController, UITableViewDataSource, UITableViewDelegate {
 
     private let post: BlogPost
     
@@ -23,20 +23,42 @@ class ViewPostViewController: UITabBarController {
     private let tableView: UITableView = {
         let table = UITableView()
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        table.register(PostHeaderTableViewCell.self, forCellReuseIdentifier: PostHeaderTableViewCell)
+        table.register(PostHeaderTableViewCell.self, forCellReuseIdentifier: PostHeaderTableViewCell.indentifire)
         return table
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        view.addSubview(tableView)
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
 
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        tableView.frame = view.bounds
     }
     
+    //Table
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3 // title.image text
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let index = indexPath.row
+        //0: title
+        
+        //1: image
+        
+        
+    }
 
 }
