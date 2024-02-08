@@ -23,6 +23,7 @@ class ViewPostViewController: UITabBarController {
     private let tableView: UITableView = {
         let table = UITableView()
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        table.register(PostHeaderTableViewCell.self, forCellReuseIdentifier: PostHeaderTableViewCell)
         return table
     }()
     
